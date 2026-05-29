@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Invitation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Name screen ── -->
+  <div id="nameScreen">
+    <div id="nameBox">
+      <h1>Hi! What's your name?</h1>
+      <input type="text" id="nameInput" placeholder="Your name..." autocomplete="off" />
+      <button id="nextBtn" onclick="submitName()">Next →</button>
+      <p id="errorMsg"></p>
+    </div>
+  </div>
+
+  <!-- ── Envelope screen ── -->
+  <div id="envelopeScreen" class="hidden">
+    <div id="scene">
+
+      <div id="card">
+        <h2>✦ You're Invited ✦</h2>
+        <p id="inviteText"></p>
+        <div class="rsvp-options">
+          <label class="rsvp-label">
+            <input type="checkbox" id="chkYes" onchange="handleCheck('yes')" /> Yes
+          </label>
+          <label class="rsvp-label">
+            <input type="checkbox" id="chkNo" onchange="handleCheck('no')" /> No
+          </label>
+        </div>
+      </div>
+
+      <svg id="envWrap" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+        <defs>
+          <pattern id="paperPat" patternUnits="userSpaceOnUse" width="720" height="480">
+            <image href="paper.jpeg" x="0" y="0" width="720" height="480" preserveAspectRatio="xMidYMid slice"/>
+          </pattern>
+          <pattern id="paperPatDark" patternUnits="userSpaceOnUse" width="720" height="480">
+            <image href="paper.jpeg" x="0" y="0" width="720" height="480" preserveAspectRatio="xMidYMid slice"/>
+            <rect width="720" height="480" fill="rgba(0,0,0,0.13)"/>
+          </pattern>
+        </defs>
+
+        <rect x="10" y="10" width="700" height="460" rx="4" class="paper-fill" stroke="rgba(150,140,125,0.5)" stroke-width="1"/>
+        <polygon points="10,470 360,240 10,10"   class="paper-fill-dark" stroke="rgba(140,130,115,0.4)" stroke-width="0.8"/>
+        <polygon points="710,470 360,240 710,10" class="paper-fill-dark" stroke="rgba(140,130,115,0.4)" stroke-width="0.8"/>
+        <polygon points="10,470 710,470 360,240" class="paper-fill"      stroke="rgba(140,130,115,0.4)" stroke-width="0.8"/>
+        <polygon id="flap" points="10,10 710,10 360,252" class="paper-fill-dark" stroke="rgba(130,120,105,0.5)" stroke-width="1"/>
+
+        <image id="sealImg"
+          href="seal.png"
+          x="248" y="128"
+          width="224" height="224"
+          onclick="breakSeal()"
+        />
+
+        <text id="hint" x="360" y="332">click to open</text>
+      </svg>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
