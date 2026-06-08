@@ -5,6 +5,30 @@ let currentName = '';
 let currentRsvp = '';
 
 /* ════════════════════════════
+   BACKGROUND CROSSFADE
+════════════════════════════ */
+const bgLayers = ['bg1', 'bg2', 'bg3'].map(id => document.getElementById(id));
+const bgBrown  = document.getElementById('bgBrown');
+let bgCycleStarted = false;
+
+function startBgCycle() {
+  if (bgCycleStarted) return;
+  bgCycleStarted = true;
+
+  let current = 0;
+  bgLayers[current].style.opacity = '1';
+
+  // Fade out brown as first colour layer fades in
+  bgBrown.style.opacity = '0';
+
+  setInterval(() => {
+    bgLayers[current].style.opacity = '0';
+    current = (current + 1) % bgLayers.length;
+    bgLayers[current].style.opacity = '1';
+  }, 4000);
+}
+
+/* ════════════════════════════
    NAME SCREEN
 ════════════════════════════ */
 async function submitName() {
@@ -13,7 +37,7 @@ async function submitName() {
   if (!name) { flashInput(input); return; }
 
   const nextBtn = document.getElementById('nextBtn');
-  nextBtn.textContent = 'Checking...';
+  nextBtn.textContent = 'checking...';
   nextBtn.disabled = true;
 
   try {
@@ -29,10 +53,11 @@ async function submitName() {
     }
 
     currentName = match;
+    startBgCycle();
 
     // Personalise invite text
     document.getElementById('inviteText').innerHTML =
-      `Dear <strong>${match}</strong>,<br>You're invited to Kashev's birthday party on<br>June ??, 2026 from 4PM – 9PM!<br><br>Will you be able to attend?`;
+      `Dearest ${match},<br>You're invited to Kashev's birthday party on<br><strong>July 4th, 2026 from 4PM - 9PM!</strong><br><br>Will you be attending?`;
 
     // Personalise pledge text
     document.getElementById('pledgeText').innerHTML =
@@ -79,9 +104,9 @@ function breakSeal() {
   const flap    = document.getElementById('flap');
   const envWrap = document.getElementById('envWrap');
   const card    = document.getElementById('card');
-  const hint    = document.getElementById('hint');
+  const hint = document.getElementById('hint');
+if (hint) hint.style.display = 'none';
 
-  hint.style.display = 'none';
   seal.classList.add('falling');
   setTimeout(() => flap.classList.add('open'), 380);
   setTimeout(() => card.classList.add('revealed'), 1400);
@@ -101,7 +126,7 @@ function handleCheck(choice) {
 
 async function submitRsvp() {
   const doneBtn = document.getElementById('doneBtn');
-  doneBtn.textContent = 'Saving...';
+  doneBtn.textContent = 'saving...';
   doneBtn.disabled = true;
 
   // Write RSVP to sheet
@@ -149,7 +174,7 @@ function submitTheme() {
   // Drop thank you card in
   setTimeout(() => {
     const msg = currentRsvp === 'yes'
-      ? `We're so excited to celebrate with you, <strong>${currentName}</strong>!<br>See you there!`
+      ? `See you there, ${currentName}!`
       : `We'll miss you, <strong>${currentName}</strong>.<br>Thanks for letting us know!`;
     document.getElementById('thankYouText').innerHTML = msg;
     document.getElementById('thankYouCard').classList.add('dropped');
@@ -161,17 +186,17 @@ function submitTheme() {
    CONFETTI
 ════════════════════════════ */
 function launchConfetti() {
-  const colors = ['#f48fb1','#ce93d8','#90caf9','#a5d6a7','#fff176','#ffcc80','#ef9a9a'];
+  const petals = ['images/blue-petal.png', 'images/pink-petal.png', 'images/yellow-petal.png'];
   for (let i = 0; i < 70; i++) {
-    const p = document.createElement('div');
+    const p = document.createElement('img');
     p.className = 'cp';
+    p.src = petals[Math.floor(Math.random() * petals.length)];
     p.style.left = Math.random() * 100 + 'vw';
-    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    p.style.width = (20 + Math.random() * 20) + 'px';
+    p.style.height = 'auto';
     p.style.animationDuration = (1.6 + Math.random() * 2) + 's';
-    p.style.animationDelay   = (Math.random() * 0.7) + 's';
-    p.style.width  = (6 + Math.random() * 10) + 'px';
-    p.style.height = (6 + Math.random() * 10) + 'px';
-    p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    p.style.animationDelay = (Math.random() * 0.7) + 's';
+    p.style.transform = `rotate(${Math.random() * 360}deg)`;
     document.body.appendChild(p);
     p.addEventListener('animationend', () => p.remove());
   }

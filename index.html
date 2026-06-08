@@ -1,86 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kash's Bday Invite!</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kash's Bday Invite!</title>
 
-  <!-- ── Name screen ── -->
-  <div id="nameScreen">
-    <div id="nameBox">
-      <h1>You're invited to Kashev's birthday!</h1>
-      <h2>Let's double check you're on the guestlist :)</h2>
-      <input type="text" id="nameInput" placeholder="first name..." autocomplete="off" />
-      <button id="nextBtn" onclick="submitName()">Next →</button>
-      <p id="errorMsg"></p>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Meow+Script&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pinyon+Script&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Meow+Script&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pinyon+Script&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div
+      class="bg-layer"
+      id="bgBrown"
+      style="background-image: url(&quot;images/brown.png&quot;); opacity: 1"
+    ></div>
+    <div
+      class="bg-layer"
+      id="bg1"
+      style="background-image: url(&quot;images/pink.png&quot;)"
+    ></div>
+    <div
+      class="bg-layer"
+      id="bg2"
+      style="background-image: url(&quot;images/blue.png&quot;)"
+    ></div>
+    <div
+      class="bg-layer"
+      id="bg3"
+      style="background-image: url(&quot;images/green.png&quot;)"
+    ></div>
+
+    <!-- ── Name screen ── -->
+    <div id="nameScreen">
+      <div id="nameBox">
+        <h1>You're invited to<br />Kashev's birthday!</h1>
+        <h2>let's double check you're on the guestlist :)</h2>
+        <input
+          type="text"
+          id="nameInput"
+          placeholder="enter first name"
+          autocomplete="off"
+        />
+        <button id="nextBtn" onclick="submitName()">next →</button>
+        <p id="errorMsg"></p>
+      </div>
     </div>
-  </div>
 
-  <!-- ── Envelope screen ── -->
-  <div id="envelopeScreen" class="hidden">
-    <div id="scene">
-
-      <!-- Card 1: Invite (starts inside envelope) -->
-      <div id="card">
-        <h2>✦ You're Invited ✦</h2>
-        <p id="inviteText"></p>
-        <div class="rsvp-options">
-          <label class="rsvp-label">
-            <input type="checkbox" id="chkYes" onchange="handleCheck('yes')" /> Yes
-          </label>
-          <label class="rsvp-label">
-            <input type="checkbox" id="chkNo" onchange="handleCheck('no')" /> No
-          </label>
+    <!-- ── Envelope screen ── -->
+    <div id="envelopeScreen" class="hidden">
+      <div id="scene">
+        <!-- Card 1: Invite (starts inside envelope) -->
+        <div id="card">
+          <br />
+          <h2>You're Invited!</h2>
+          <p id="inviteText"></p>
+          <div class="rsvp-options">
+            <label class="rsvp-label">
+              <input
+                type="checkbox"
+                id="chkYes"
+                onchange="handleCheck('yes')"
+              />
+              Yes
+            </label>
+            <label class="rsvp-label">
+              <input type="checkbox" id="chkNo" onchange="handleCheck('no')" />
+              No
+            </label>
+          </div>
+          <br>
+          <button
+            id="doneBtn"
+            class="done-btn hidden-btn"
+            onclick="submitRsvp()"
+          >
+            done
+          </button>
         </div>
-        <button id="doneBtn" class="done-btn hidden-btn" onclick="submitRsvp()">Done</button>
-      </div>
 
-      <!-- Card 2: Theme (drops in after RSVP) -->
-      <div id="themeCard">
-        <h2>✦ Party Details ✦</h2>
-        <div class="theme-details">
-          <p class="theme-line">The theme is <strong>Tea Party</strong></p>
-          <p class="theme-line">Dress code: <strong>Florals &amp; Linen</strong></p>
+        <!-- Card 2: Theme (drops in after RSVP) -->
+        <div id="themeCard">
+          <img
+            src="images/dress-code-top.png"
+            class="card-deco card-deco-top"
+          />
+          <br>
+          <h2>Party Details</h2>
+          <div class="theme-details">
+            <p class="theme-line">Theme:<br /><strong>Tea Party</strong></p>
+            <p class="theme-line">
+              Dress code:<br /><strong>Florals &amp; Linen</strong>
+            </p>
+            <p class="theme-line">If you need inspo,<br>here is a <strong>pinterest board</strong></p>
+          </div>
+          <label class="pledge-label">
+            <input type="checkbox" id="chkPledge" onchange="handlePledge()" />
+            <span id="pledgeText"
+              >I hereby understand the theme and will dress
+              appropriately.</span
+            >
+          </label>
+          <button
+            id="themeDoneBtn"
+            class="done-btn hidden-btn"
+            onclick="submitTheme()"
+          >
+            done
+          </button>
+          <img
+            style="width: 20rem;"
+            src="images/dress-code-btm.png"
+            class="card-deco card-deco-btm"
+          />
         </div>
-        <label class="pledge-label">
-          <input type="checkbox" id="chkPledge" onchange="handlePledge()" />
-          <span id="pledgeText">I , hereby understand the theme and will dress appropriately.</span>
-        </label>
-        <button id="themeDoneBtn" class="done-btn hidden-btn" onclick="submitTheme()">Done</button>
+
+        <!-- Card 3: Thank you (drops in last) -->
+        <div id="thankYouCard">
+          <img src="images/flowers.png" class="flowers-img" />
+          <h2>Yipee! Yay!<br>Can't wait!</h2>
+          <p id="thankYouText"></p>
+        </div>
+
+        <!-- Envelope SVG -->
+        <svg
+          id="envWrap"
+          viewBox="0 0 720 480"
+          xmlns="http://www.w3.org/2000/svg"
+          overflow="visible"
+        >
+          <defs>
+            <pattern
+              id="paperPat"
+              patternUnits="userSpaceOnUse"
+              width="720"
+              height="480"
+            >
+              <image
+                href="images/brown.png"
+                x="0"
+                y="0"
+                width="720"
+                height="480"
+                preserveAspectRatio="xMidYMid slice"
+              />
+            </pattern>
+            <pattern
+              id="paperPatDark"
+              patternUnits="userSpaceOnUse"
+              width="720"
+              height="480"
+            >
+              <image
+                href="images/brown.png"
+                x="0"
+                y="0"
+                width="720"
+                height="480"
+                preserveAspectRatio="xMidYMid slice"
+              />
+              <rect width="720" height="480" fill="rgba(0,0,0,0.13)" />
+            </pattern>
+          </defs>
+          <rect
+            x="10"
+            y="10"
+            width="700"
+            height="460"
+            rx="4"
+            class="paper-fill"
+            stroke="rgba(150,140,125,0.5)"
+            stroke-width="1"
+          />
+          <polygon
+            points="10,470 360,240 10,10"
+            class="paper-fill-dark"
+            stroke="rgba(140,130,115,0.4)"
+            stroke-width="0.8"
+          />
+          <polygon
+            points="710,470 360,240 710,10"
+            class="paper-fill-dark"
+            stroke="rgba(140,130,115,0.4)"
+            stroke-width="0.8"
+          />
+          <polygon
+            points="10,470 710,470 360,240"
+            class="paper-fill"
+            stroke="rgba(140,130,115,0.4)"
+            stroke-width="0.8"
+          />
+          <polygon
+            id="flap"
+            points="10,10 710,10 360,252"
+            class="paper-fill-dark"
+            stroke="rgba(130,120,105,0.5)"
+            stroke-width="1"
+          />
+          <image
+            id="sealImg"
+            href="images/ladybug-seal.png"
+            x="248"
+            y="128"
+            width="220"
+            height="220"
+            onclick="breakSeal()"
+          />
+        </svg>
       </div>
-
-      <!-- Card 3: Thank you (drops in last) -->
-      <div id="thankYouCard">
-        <h2>✦ Thank You! ✦</h2>
-        <p id="thankYouText"></p>
-      </div>
-
-      <!-- Envelope SVG -->
-      <svg id="envWrap" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-        <defs>
-          <pattern id="paperPat" patternUnits="userSpaceOnUse" width="720" height="480">
-            <image href="paper.jpeg" x="0" y="0" width="720" height="480" preserveAspectRatio="xMidYMid slice"/>
-          </pattern>
-          <pattern id="paperPatDark" patternUnits="userSpaceOnUse" width="720" height="480">
-            <image href="paper.jpeg" x="0" y="0" width="720" height="480" preserveAspectRatio="xMidYMid slice"/>
-            <rect width="720" height="480" fill="rgba(0,0,0,0.13)"/>
-          </pattern>
-        </defs>
-        <rect x="10" y="10" width="700" height="460" rx="4" class="paper-fill" stroke="rgba(150,140,125,0.5)" stroke-width="1"/>
-        <polygon points="10,470 360,240 10,10"   class="paper-fill-dark" stroke="rgba(140,130,115,0.4)" stroke-width="0.8"/>
-        <polygon points="710,470 360,240 710,10" class="paper-fill-dark" stroke="rgba(140,130,115,0.4)" stroke-width="0.8"/>
-        <polygon points="10,470 710,470 360,240" class="paper-fill"      stroke="rgba(140,130,115,0.4)" stroke-width="0.8"/>
-        <polygon id="flap" points="10,10 710,10 360,252" class="paper-fill-dark" stroke="rgba(130,120,105,0.5)" stroke-width="1"/>
-        <image id="sealImg" href="seal.png" x="248" y="128" width="224" height="224" onclick="breakSeal()"/>
-        <text id="hint" x="360" y="332">click to open</text>
-      </svg>
-
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
