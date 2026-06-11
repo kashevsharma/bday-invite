@@ -162,7 +162,7 @@ span {
 #scene {
   position: relative;
   width: 95vw;
-  height: 150vw;
+  height: 180vw;
   display: flex;
   align-items: center;
   justify-content: center;
