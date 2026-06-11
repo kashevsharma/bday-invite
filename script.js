@@ -150,8 +150,12 @@ async function submitRsvp() {
 
   // Drop theme card in
   setTimeout(() => {
+  if (currentRsvp === 'no') {
+    document.getElementById('noCard').classList.add('dropped');
+  } else {
     document.getElementById('themeCard').classList.add('dropped');
-  }, 550);
+  }
+}, 550);
 }
 
 /* ════════════════════════════
