@@ -1,4 +1,8 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   min-height: 100vh;
@@ -6,7 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   background: #f5f0e8;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   overflow: hidden;
 }
 
@@ -27,7 +31,7 @@ h1 {
   font-weight: normal;
   color: #2e2018;
   line-height: 1.2;
-  font-family: 'Meow Script', cursive;
+  font-family: "Meow Script", cursive;
 }
 
 h2 {
@@ -35,14 +39,16 @@ h2 {
   font-weight: normal;
   color: #2e2018;
   line-height: 1.2;
-  font-family: 'Meow Script', cursive;
+  font-family: "Meow Script", cursive;
 }
 
-p, label, span {
+p,
+label,
+span {
   font-size: 16px;
   color: #2e2018;
   line-height: 1.75;
-  font-family: 'Source Serif 4', serif;
+  font-family: "Source Serif 4", serif;
 }
 
 /* ════════════════════════════
@@ -56,7 +62,9 @@ p, label, span {
   justify-content: center;
   z-index: 100;
   padding: 24px;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 #nameScreen.hide {
   opacity: 0;
@@ -76,14 +84,14 @@ p, label, span {
 
 #nameBox h2 {
   font-size: 18px;
-  font-family: 'Source Serif 4', serif;
+  font-family: "Source Serif 4", serif;
 }
 
 #nameInput {
   width: 100%;
   padding: 14px 20px;
   font-size: 16px;
-  font-family: 'Source Serif 4', serif;
+  font-family: "Source Serif 4", serif;
   border: 2px solid #a15c7a;
   border-radius: 6px;
   background: #fffdf7;
@@ -92,23 +100,34 @@ p, label, span {
   text-align: center;
   transition: border-color 0.2s ease;
 }
-#nameInput::placeholder { color: rgba(46,32,24,0.35); }
+#nameInput::placeholder {
+  color: rgba(46, 32, 24, 0.35);
+}
 
 #nextBtn {
   padding: 13px 40px;
   font-size: 15px;
-  font-family: 'Source Serif 4', serif;
+  font-family: "Source Serif 4", serif;
   background: #a15c7a;
   color: #fffdf7;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   letter-spacing: 1px;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
 }
-#nextBtn:hover   { background: #6e3050; }
-#nextBtn:active  { transform: scale(0.97); }
-#nextBtn:disabled { background: #b08898; cursor: not-allowed; }
+#nextBtn:hover {
+  background: #6e3050;
+}
+#nextBtn:active {
+  transform: scale(0.97);
+}
+#nextBtn:disabled {
+  background: #b08898;
+  cursor: not-allowed;
+}
 
 #errorMsg {
   display: none;
@@ -132,8 +151,13 @@ p, label, span {
   padding: 16px;
   transition: opacity 0.7s ease 0.3s;
 }
-#envelopeScreen.hidden  { pointer-events: none; }
-#envelopeScreen.visible { opacity: 1; pointer-events: auto; }
+#envelopeScreen.hidden {
+  pointer-events: none;
+}
+#envelopeScreen.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 #scene {
   position: relative;
@@ -147,15 +171,18 @@ p, label, span {
 /* ════════════════════════════
    CARDS (shared)
 ════════════════════════════ */
-#card, #themeCard, #giftsCard, #thankYouCard {
+#card,
+#themeCard,
+#giftsCard,
+#thankYouCard {
   position: absolute;
   left: 50%;
   top: 50%;
   width: 92vw;
   height: 125vw;
-  background: url('images/brown.png') center/cover;
+  background: url("images/brown.png") center/cover;
   border-radius: 4px;
-  border: 1px solid rgba(180,170,155,0.5);
+  border: 1px solid rgba(180, 170, 155, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -167,10 +194,12 @@ p, label, span {
 
 /* ── Card 1: Invite ── */
 #card {
-  transform: translate(-50%, -50%) scale(0.20);
+  transform: translate(-50%, -50%) scale(0.2);
   z-index: 1;
   pointer-events: none;
-  transition: transform 1s cubic-bezier(0.34, 1.15, 0.64, 1), opacity 0.4s ease;
+  transition:
+    transform 1s cubic-bezier(0.34, 1.15, 0.64, 1),
+    opacity 0.4s ease;
 }
 #card.revealed {
   transform: translate(-50%, -50%) scale(1);
@@ -268,16 +297,20 @@ p, label, span {
   margin: 0 auto;
 }
 
-#pledgeText { font-style: italic; text-align: center; }
+#pledgeText {
+  font-style: italic;
+  text-align: center;
+}
 
 .card-flowers {
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 80px;
+  margin-top: -20px;
 }
 .card-flowers img {
-  width: 35%;
-  height: auto;
+  width: auto;
+  height: 200px;
   pointer-events: none;
 }
 
@@ -287,7 +320,7 @@ p, label, span {
 .done-btn {
   padding: 10px 28px;
   font-size: 14px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-style: italic;
   background: #8a4060;
   color: #fffdf7;
@@ -295,22 +328,40 @@ p, label, span {
   border-radius: 6px;
   cursor: pointer;
   letter-spacing: 1px;
-  transition: background 0.2s ease, transform 0.1s ease, opacity 0.4s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    opacity 0.4s ease;
 }
-.done-btn:hover  { background: #6e3050; }
-.done-btn:active { transform: scale(0.97); }
-.done-btn:disabled { background: #b08898; cursor: not-allowed; }
+.done-btn:hover {
+  background: #6e3050;
+}
+.done-btn:active {
+  transform: scale(0.97);
+}
+.done-btn:disabled {
+  background: #b08898;
+  cursor: not-allowed;
+}
 
-.hidden-btn { opacity: 0; pointer-events: none; }
-.hidden-btn.show { opacity: 1; pointer-events: auto; }
+.hidden-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+.hidden-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* ════════════════════════════
    ENVELOPE SVG
 ════════════════════════════ */
 #envWrap {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 2;
   perspective: 1200px;
 }
@@ -318,9 +369,18 @@ p, label, span {
   animation: envDrop 0.85s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 @keyframes envDrop {
-  0%   { transform: translateY(0)     rotate(0deg);  opacity: 1; }
-  20%  { transform: translateY(30px)  rotate(-3deg); opacity: 1; }
-  100% { transform: translateY(130vh) rotate(-8deg); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(30px) rotate(-3deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(130vh) rotate(-8deg);
+    opacity: 0;
+  }
 }
 
 #flap {
@@ -328,28 +388,48 @@ p, label, span {
   transform-box: fill-box;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-#flap.open { transform: rotateX(180deg); }
+#flap.open {
+  transform: rotateX(180deg);
+}
 
-.paper-fill      { fill: url(#paperPat); }
-.paper-fill-dark { fill: url(#paperPatDark); }
+.paper-fill {
+  fill: url(#paperPat);
+}
+.paper-fill-dark {
+  fill: url(#paperPatDark);
+}
 
 #sealImg {
-  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.45));
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
   transition: transform 0.15s ease;
   transform-origin: 360px 240px;
   transform-box: view-box;
   cursor: pointer;
 }
-#sealImg:hover { transform: scale(1.07); }
+#sealImg:hover {
+  transform: scale(1.07);
+}
 #sealImg.falling {
   animation: sealFall 0.85s cubic-bezier(0.4, 0, 1, 1) forwards;
   pointer-events: none;
 }
 @keyframes sealFall {
-  0%   { transform: translate(0,0)        rotate(0deg);  opacity: 1; }
-  25%  { transform: translate(40px,60px)  rotate(22deg); opacity: 1; }
-  60%  { transform: translate(70px,320px) rotate(52deg); opacity: 0.5; }
-  100% { transform: translate(90px,800px) rotate(85deg); opacity: 0; }
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(40px, 60px) rotate(22deg);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(70px, 320px) rotate(52deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(90px, 800px) rotate(85deg);
+    opacity: 0;
+  }
 }
 
 /* ════════════════════════════
@@ -362,36 +442,64 @@ p, label, span {
   animation: cpFall linear forwards;
 }
 @keyframes cpFall {
-  0%   { transform: translateY(0) rotate(0deg);     opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
 }
 
 /* ════════════════════════════
    DESKTOP OVERRIDE
 ════════════════════════════ */
 @media (min-width: 601px) {
-  h1 { font-size: 64px; }
-  h2 { font-size: 48px; }
-  p, label, span { font-size: 20px; }
+  h1 {
+    font-size: 64px;
+  }
+  h2 {
+    font-size: 48px;
+  }
+  p,
+  label,
+  span {
+    font-size: 20px;
+  }
 
-  #nameBox { max-width: 520px; }
-  #nameBox h2 { font-size: 22px; }
-  #nameInput { font-size: 18px; }
-  #nextBtn { font-size: 17px; }
+  #nameBox {
+    max-width: 520px;
+  }
+  #nameBox h2 {
+    font-size: 22px;
+  }
+  #nameInput {
+    font-size: 18px;
+  }
+  #nextBtn {
+    font-size: 17px;
+  }
 
   #scene {
     width: 720px;
     height: 480px;
   }
 
-  #card, #themeCard, #giftsCard, #thankYouCard {
+  #card,
+  #themeCard,
+  #giftsCard,
+  #thankYouCard {
     width: 700px;
     height: 520px;
     padding: 48px 60px;
     gap: 20px;
   }
 
-  #top-img, #btm-img { display: none; }
+  #top-img,
+  #btm-img {
+    display: none;
+  }
 
   #top-img2 {
     margin-bottom: 0;
@@ -400,11 +508,19 @@ p, label, span {
     margin-top: 0;
   }
 
-  .flowers-img { width: 400px; }
-  .card-flowers img { width: 38%; }
-  .card-deco { width: 15rem; }
+  .flowers-img {
+    width: 400px;
+  }
+  .card-flowers img {
+    width: 38%;
+  }
+  .card-deco {
+    width: 15rem;
+  }
 
-  #card { overflow: visible; }
+  #card {
+    overflow: visible;
+  }
 
   .card-flowers {
     position: absolute;
@@ -414,10 +530,12 @@ p, label, span {
     width: calc(75% + 150px);
     justify-content: space-between;
     gap: 0;
-    pointer-events: none; 
+    margin-top: 0;
+    pointer-events: none;
   }
   .card-flowers img {
     width: 160px;
-    pointer-events: none; 
+    height: auto;
+    pointer-events: none;
   }
 }
