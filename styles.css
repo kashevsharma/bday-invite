@@ -273,10 +273,10 @@ p, label, span {
 .card-flowers {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 60px;
 }
 .card-flowers img {
-  width: 45%;
+  width: 35%;
   height: auto;
   pointer-events: none;
 }
