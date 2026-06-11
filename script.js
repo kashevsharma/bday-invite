@@ -164,14 +164,24 @@ function handlePledge() {
 }
 
 function submitTheme() {
-  // Slide theme card off upward
   const themeCard = document.getElementById('themeCard');
   themeCard.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
   themeCard.style.transform  = 'translate(-50%, -200vh)';
   themeCard.style.opacity    = '0';
   themeCard.style.pointerEvents = 'none';
 
-  // Drop thank you card in
+  setTimeout(() => {
+    document.getElementById('giftsCard').classList.add('dropped');
+  }, 550);
+}
+
+function submitGifts() {
+  const giftsCard = document.getElementById('giftsCard');
+  giftsCard.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
+  giftsCard.style.transform  = 'translate(-50%, -200vh)';
+  giftsCard.style.opacity    = '0';
+  giftsCard.style.pointerEvents = 'none';
+
   setTimeout(() => {
     const msg = currentRsvp === 'yes'
       ? `See you there, ${currentName}!`
