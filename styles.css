@@ -138,7 +138,7 @@ p, label, span {
 #scene {
   position: relative;
   width: 95vw;
-  height: 130vw;
+  height: 150vw;
   display: flex;
   align-items: center;
   justify-content: center;
